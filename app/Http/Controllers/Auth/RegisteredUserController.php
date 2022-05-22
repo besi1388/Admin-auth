@@ -43,12 +43,18 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'status' => 0,
         ]);
 
-        event(new Registered($user));
+        $user->save();
 
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        if($user->status == 1) {
+           // Login successfully
+        } else {
+           return back()->with('error','your account is inactive');
+        }
     }
+
+    
+    
 }

@@ -22,6 +22,11 @@ class LoginRequest extends FormRequest
     }
 
     /**
+ * Custom credentials to validate the status of user.
+ */
+
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
